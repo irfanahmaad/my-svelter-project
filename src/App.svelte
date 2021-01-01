@@ -1,16 +1,24 @@
 <script>
+	import Header from './components/Header.svelte';
+
 	export let name;
-	let counter = 0;
+	let count = 0;
 
 	const increment = () => {
-		counter += 1
+		count += 1
 	}
+	
+	$: doubled = count * 2
+	$: console.log(`Count is ${count}`)
 </script>
 
 <main>
-	<h1>Hello {name}! {counter}</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Header />
+
+	<h2>Hello {name}!</h2>
+	<h2>{count} doubled is {doubled}</h2>
 	<button on:click={increment}>Increment</button>
+
 </main>
 
 <style>
@@ -21,10 +29,10 @@
 		margin: 0 auto;
 	}
 
-	h1 {
+	h2 {
 		color: #ff3e00;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 2em;
 		font-weight: 100;
 	}
 
